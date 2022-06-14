@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JdkSwitcher", "JdkSwitcher\JdkSwitcher.csproj", "{5C7C50A3-3222-4C6F-BEEF-6ABB3E89FC31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JdkSwitcher", "JdkSwitcher\JdkSwitcher.csproj", "{5C7C50A3-3222-4C6F-BEEF-6ABB3E89FC31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{B0F8EF8D-E2BA-4A79-91A7-8F28A8BCF25E}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
