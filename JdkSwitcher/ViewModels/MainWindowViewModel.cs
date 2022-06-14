@@ -44,6 +44,7 @@ namespace JdkSwitcher.ViewModels
             dvManager.CurrentConnection = ConnectionManager.DefaultConnection;
             dvManager.Mode = VersioningStrategy.ByTick;
             dvManager.RegisterChangePlan(new ChangePlan_VersionOrigin());
+            dvManager.RegisterChangePlan(new ChangePlan_Version1());
             dvManager.FinishedToUpgradeTo += DvManager_FinishedToUpgradeTo;
             dvManager.UpgradeToTargetVersion();
 

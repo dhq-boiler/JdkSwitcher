@@ -104,6 +104,14 @@ namespace JdkSwitcher.Extensions
 
             return isNull ? null : (TimeSpan?)rdr.GetValue(index);
         }
+        public static T SafeGetEnum<T>(this IDataRecord rdr, string columnName, ITable table)
+        {
+            int index = rdr.CheckColumnExists(columnName, table);
+
+            bool isNull = rdr.IsDBNull(index);
+
+            return isNull ? throw new NullReferenceException($"expected enum value but {columnName} value is null") : (T)Enum.ToObject(typeof(T), rdr.GetValue(index));
+        }
 
         public static int CheckColumnExists(this IDataRecord rdr, string columnName, ITable table)
         {

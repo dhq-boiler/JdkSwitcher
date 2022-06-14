@@ -27,7 +27,11 @@
                     <GridViewColumn
                         Width="400"
                         DisplayMemberBinding="{Binding JavaHome}"
-                        Header="JAVA_HOME" />
+                        Header="JAVA__HOME" />
+                    <GridViewColumn
+                        Width="200"
+                        DisplayMemberBinding="{Binding EnvironmentVariableTarget}"
+                        Header="EnvironmentVariableTarget" />
                 </GridView>
             </ListView.View>
             <ListView.ItemContainerStyle>

@@ -29,6 +29,7 @@ namespace JdkSwitcher.ViewModels
         public ReactivePropertySlim<Guid> ID { get; set; } = new ReactivePropertySlim<Guid>();
         public ReactivePropertySlim<string> Name { get; set; } = new ReactivePropertySlim<string>();
         public ReactivePropertySlim<string> JavaHome { get; set; } = new ReactivePropertySlim<string>();
+        public ReactivePropertySlim<EnvironmentVariableTarget> EnvironmentVariableTarget { get; set; } = new ReactivePropertySlim<EnvironmentVariableTarget>();
 
         public NewOrEditJdkViewModel()
         {
@@ -41,6 +42,7 @@ namespace JdkSwitcher.ViewModels
                         jdk.ID = Guid.NewGuid();
                         jdk.Name = Name.Value;
                         jdk.JavaHome = JavaHome.Value;
+                        jdk.EnvironmentVariableTarget = EnvironmentVariableTarget.Value;
                         RequestClose.Invoke(new DialogResult(ButtonResult.OK, new DialogParameters() { { "Jdk", jdk } }));
                         break;
                     case "EDIT":
@@ -48,6 +50,7 @@ namespace JdkSwitcher.ViewModels
                         jdk.ID = ID.Value;
                         jdk.Name = Name.Value;
                         jdk.JavaHome = JavaHome.Value;
+                        jdk.EnvironmentVariableTarget = EnvironmentVariableTarget.Value;
                         RequestClose.Invoke(new DialogResult(ButtonResult.OK, new DialogParameters() { { "Jdk", jdk } }));
                         break;
                 }
@@ -83,6 +86,7 @@ namespace JdkSwitcher.ViewModels
                     ID.Value = jdk.ID;
                     Name.Value = jdk.Name;
                     JavaHome.Value = jdk.JavaHome;
+                    EnvironmentVariableTarget.Value = jdk.EnvironmentVariableTarget;
                     break;
             }
         }
