@@ -26,6 +26,7 @@ namespace JdkSwitcher.Models
                 ID = reader.SafeGetGuid(nameof(Jdk.ID), Table),
                 Name = reader.SafeGetString(nameof(Jdk.Name), Table),
                 JavaHome = reader.SafeGetString(nameof(Jdk.JavaHome), Table),
+                EnvironmentVariableTarget = reader.SafeGetEnum<EnvironmentVariableTarget>(nameof(Jdk.EnvironmentVariableTarget), Table),
             };
         }
     }

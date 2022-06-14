@@ -12,13 +12,14 @@ using System.Reactive.Disposables;
 
 namespace JdkSwitcher.Models
 {
-    [DefaultVersion(typeof(VersionOrigin))]
+    [DefaultVersion(typeof(Version1))]
     public class Jdk : PkIdEntity, IDisposable
     {
         private CompositeDisposable disposables = new CompositeDisposable();
         private string _name;
         private string _JavaHome;
         private bool disposedValue;
+        private EnvironmentVariableTarget _EnvironmentVariableTarget;
 
         [Column("Name", "TEXT", 1)]
         public string Name
@@ -34,6 +35,14 @@ namespace JdkSwitcher.Models
             set { SetProperty(ref _JavaHome, value); }
         }
 
+        [Since(typeof(Version1))]
+        [Column("EnvironmentVariableTarget", "INTEGER", 3)]
+        public EnvironmentVariableTarget EnvironmentVariableTarget
+        {
+            get { return _EnvironmentVariableTarget; }
+            set { SetProperty(ref _EnvironmentVariableTarget, value); }
+        }
+
         public ReactiveCommand SwitchCommand { get; } = new ReactiveCommand();
 
         public Jdk()
@@ -47,7 +56,7 @@ namespace JdkSwitcher.Models
 
         public void A()
         {
-            System.Environment.SetEnvironmentVariable("JAVA_HOME", JavaHome);
+            System.Environment.SetEnvironmentVariable("JAVA_HOME", JavaHome, EnvironmentVariableTarget);
         }
 
         protected virtual void Dispose(bool disposing)
