@@ -26,7 +26,14 @@ namespace JdkSwitcher.Models.Migration
 
         public override void UpgradeToTargetVersion(IConnection connection)
         {
-            CreateTable(connection);
+            var dao = new JdkDao(typeof(Version1));
+            dao.CurrentConnection = connection;
+            dao.CreateTableIfNotExists();
+            ++ModifiedCount;
+            dao.CreateIndexIfNotExists();
+            ++ModifiedCount;
+            dao.UpgradeTable(new VersionChangeUnit(typeof(VersionOrigin), TargetVersion.GetType()));
+            ++ModifiedCount;
         }
     }
 }
