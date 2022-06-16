@@ -110,7 +110,7 @@ namespace JdkSwitcher.Extensions
 
             bool isNull = rdr.IsDBNull(index);
 
-            return isNull ? throw new NullReferenceException($"expected enum value but {columnName} value is null") : (T)Enum.ToObject(typeof(T), rdr.GetValue(index));
+            return isNull ? (T)Enum.ToObject(typeof(T), default(T)) : (T)Enum.ToObject(typeof(T), rdr.GetValue(index));
         }
 
         public static int CheckColumnExists(this IDataRecord rdr, string columnName, ITable table)
