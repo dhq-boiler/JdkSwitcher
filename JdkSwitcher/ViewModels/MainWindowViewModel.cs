@@ -75,6 +75,7 @@ namespace JdkSwitcher.ViewModels
                         var updated = dialogResult.Parameters.GetValue<Jdk>("Jdk");
                         p.Name = updated.Name;
                         p.JavaHome = updated.JavaHome;
+                        p.EnvironmentVariableTarget = updated.EnvironmentVariableTarget;
                         var dao = new JdkDao();
                         dao.Update(p);
                     }
@@ -94,6 +95,7 @@ namespace JdkSwitcher.ViewModels
                     var updated = dialogResult.Parameters.GetValue<Jdk>("Jdk");
                     jdk.Name = updated.Name;
                     jdk.JavaHome = updated.JavaHome;
+                    jdk.EnvironmentVariableTarget = updated.EnvironmentVariableTarget;
                     var dao = new JdkDao();
                     dao.Update(jdk);
                 }
